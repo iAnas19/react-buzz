@@ -1,6 +1,5 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import { useToaster } from "./Toaster";
 
 import "./app.css";
@@ -9,36 +8,39 @@ function App() {
   const [count, setCount] = useState(0);
 
   const addToast = useToaster();
-  const handleClick = () => {
+  const handleSuccess = () => {
     setCount((count) => count + 1);
-    addToast(
-      `Count Count isCount isCount isCount isCount isCount isCount is Count isCount isCount isCount isCount isCount isCount isCount is is ${
-        count + 1
-      }`,
-      "success"
-    );
+    addToast(`Count increased  Successfully`, "success");
+  };
+  const handleError = () => {
+    addToast(`Something went wrong`, "error");
+  };
+  const handleInfo = () => {
+    addToast(`Count is ${count + 1}`, "info");
+  };
+  const handleWarning = () => {
+    addToast(`Count is ${count - 1}`, "warning");
   };
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={handleClick}>count is {count}</button>
+      <h1>React Buzz</h1>
+      <div className="description">
+        <div className="card">
+          <button onClick={handleSuccess}>Success</button>
+          <button onClick={handleError}>Error</button>
+          <button onClick={handleInfo}>Info</button>
+          <button onClick={handleWarning}>Warning</button>
+        </div>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          A lightweight, customizable toaster notification component for React
+          featuring drag-to-dismiss, auto-expiration, grouped/stacked
+          appearance, and pop-in/pop-out animations.
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }

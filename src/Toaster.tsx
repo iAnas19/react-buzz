@@ -11,6 +11,7 @@ import successIcon from "./assets/success.svg";
 import errorIcon from "./assets/error.svg";
 import infoIcon from "./assets/info.svg";
 import warningIcon from "./assets/warning.svg";
+import closeIcon from "./assets/close.svg";
 
 type ToastType = "success" | "error" | "warning" | "info";
 type ToastPosition = "top-right" | "top-left" | "bottom-right" | "bottom-left";
@@ -179,9 +180,11 @@ const ToastItem: React.FC<ToastItemProps> = ({
         <img className="toast-icon" src={icons[type]} />
         <span className="toast-message">{message}</span>
       </div>
-      <div className="toast-close" onClick={() => removeToast(id)}>
-        ✖
-      </div>
+      <img
+        src={closeIcon}
+        className="toast-close"
+        onClick={() => removeToast(id)}
+      />
     </div>
   );
 };

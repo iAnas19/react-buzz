@@ -7,7 +7,7 @@ import { ToasterProvider } from "./Toaster";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     {" "}
-    <ToasterProvider duration={10000} position="bottom-right">
+    <ToasterProvider duration={200000} position="bottom-right">
       <App />
     </ToasterProvider>
   </StrictMode>
