@@ -1,8 +1,8 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import { useToaster } from "./Toaster";
 
 import "./app.css";
+import { useToaster } from "react-buzz";
 
 function App() {
   const [count, setCount] = useState(0);

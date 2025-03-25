@@ -1,31 +1,28 @@
 import { defineConfig } from "vite";
+import { resolve } from "path";
 import react from "@vitejs/plugin-react";
-import path from "path";
-import dts from "vite-plugin-dts"; // Add this
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    dts({
-      // Add the plugin configuration
-      insertTypesEntry: true,
-      rollupTypes: true,
-      exclude: ["**/__tests__/**", "**/*.stories.tsx"],
-    }),
-  ],
+  plugins: [react(), tsconfigPaths()],
+  resolve: {
+    alias: {
+      "@lib": "/lib",
+    },
+  },
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "ReactBuzz",
-      fileName: (format) => `index.${format}.js`,
-      formats: ["es", "cjs", "umd"],
+      entry: resolve(__dirname, "lib/main.ts"),
+      name: "react-buzz",
+      fileName: "react-buzz",
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "react/jsx-runtime": "react/jsx-runtime",
         },
       },
     },
