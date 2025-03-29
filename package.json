@@ -2,25 +2,27 @@
   "name": "react-buzz",
   "version": "0.0.4",
   "description": "A lightweight, customizable toaster notification component for React.",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/react-buzz.umd.cjs",
-  "module": "./dist/react-buzz.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-buzz.js",
-      "require": "./dist/react-buzz.umd.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
     }
+  },
+  "files": [
+    "/dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "rm -rf dist",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "prepublish": "npm run build"
+    "prepare": "npm run build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",

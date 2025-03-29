@@ -8,11 +8,11 @@ import React, {
 
 import "./toaster.css";
 
-import successIcon from "../assets/success.svg";
-import errorIcon from "../assets/error.svg";
-import infoIcon from "../assets/info.svg";
-import warningIcon from "../assets/warning.svg";
-import closeIcon from "../assets/close.svg";
+import successIcon from "../../assets/success.svg";
+import errorIcon from "../../assets/error.svg";
+import infoIcon from "../../assets/info.svg";
+import warningIcon from "../../assets/warning.svg";
+import closeIcon from "../../assets/close.svg";
 
 type ToastType = "success" | "error" | "warning" | "info";
 type ToastPosition = "top-right" | "top-left" | "bottom-right" | "bottom-left";
